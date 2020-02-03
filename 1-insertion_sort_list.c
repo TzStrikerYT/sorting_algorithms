@@ -43,14 +43,14 @@ void insertion_sort_list(listint_t **list)
 		return;
 	while (front)
 	{
-		if (front->next && front->n >= front->next->n)
+		if (front->next && front->n > front->next->n)
 		{
 			list_swaper(list, front, front->next);
 			print_list(*list);
 			back = front->prev;
 			while (back)
 			{
-				if (back->prev && back->prev->n >= back->n)
+				if (back->prev && back->prev->n > back->n)
 				{
 					list_swaper(list, back->prev, back);
 					print_list(*list);
