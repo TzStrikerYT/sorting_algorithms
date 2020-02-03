@@ -39,7 +39,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *front = *list, *back = NULL;
 
-	if (!(*list) || !list)
+	if (!list || !(*list))
 		return;
 	while (front)
 	{
