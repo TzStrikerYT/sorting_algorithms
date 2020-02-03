@@ -10,7 +10,7 @@
  * Return: Nothing
  */
 
-void swaper(listint_t *current, listint_t *next)
+void list_swaper(listint_t *current, listint_t *next)
 {
 	if (current->prev)
 	{
@@ -41,14 +41,14 @@ void insertion_sort_list(listint_t **list)
 	{
 		if (front->next && front->n > front->next->n)
 		{
-			swaper(front, front->next);
+			list_swaper(front, front->next);
 			print_list(*list);
 			back = front->prev;
 			while (back)
 			{
 				if (back->prev && back->prev->n > back->n)
 				{
-					swaper(back->prev, back);
+					list_swaper(back->prev, back);
 					print_list(*list);
 				}
 				else
