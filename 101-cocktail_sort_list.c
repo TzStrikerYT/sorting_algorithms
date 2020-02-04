@@ -108,6 +108,10 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *tmp = *list;
 	int check = 0;
 
+	if (!list || !(*list))
+	{
+		return;
+	}
 	while (!check)
 	{
 		if (!tmp->prev)
