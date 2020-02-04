@@ -29,6 +29,72 @@ void list_swaper(listint_t **list, listint_t *current, listint_t *next)
 }
 
 /**
+ * find_forward - Sort node forward
+ * @list: Doubly linked list
+ *
+ * Return: Nothing
+ */
+
+listint_t *find_forward(listint_t **head, listint_t *list)
+{
+	while (list->next)
+	{
+		if (list->next && list->n > list->next->n)
+		{
+			list_swaper(head, list, list->next);
+			print_list(*head);
+			continue;
+		}
+		list = list->next;
+	}
+	return (list);
+}
+
+/**
+ * find_back - Sort node back
+ * @list: Doubly linked list
+ *
+ * Return: Nothing
+ */
+
+listint_t *find_back(listint_t **head, listint_t *list)
+{
+	while (list->prev)
+	{
+		if (list->prev && list->n < list->prev->n)
+		{
+			list_swaper(head, list->prev, list);
+			print_list(*head);
+			continue;
+		}
+		list = list->prev;
+	}
+	return (list);
+}
+
+/**
+ * list_checker - Check if a doubly linked list is sort
+ * @list: Doubly linked list
+ *
+ * Return: Nothing
+ */
+
+int list_checker(listint_t **list)
+{
+	listint_t *check = *list;
+
+	while (check->next)
+	{
+		if (check->n > check->next->n)
+		{
+			return (0);
+		}
+		check = check->next;
+	}
+	return (1);
+}
+
+/**
  * cocktail_sort_list - Sorts list using the Cocktail shaker sort algorithm
  * @list: Pointer to head of the list
  *
@@ -37,42 +103,23 @@ void list_swaper(listint_t **list, listint_t *current, listint_t *next)
 
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *tmp = *list, *check = *list;
+	listint_t *tmp = *list;
+	int check = 0;
 
-	while (tmp)
+	while (!check)
 	{
-		if (tmp->next && tmp->n > tmp->next->n)
+		if (!tmp->prev)
 		{
-			list_swaper(list, tmp, tmp->next), print_list(*list);
-			continue;
+			tmp = find_forward(list, tmp);
 		}
 		if (!tmp->next)
 		{
-			tmp = tmp->prev;
-			while (tmp->prev)
-			{
-				if (tmp->prev && tmp->n < tmp->prev->n)
-				{
-					list_swaper(list, tmp->prev, tmp);
-					print_list(*list);
-					continue;
-				}
-				tmp = tmp->prev;
-			}
+			tmp = find_back(list, tmp);
 		}
-		while (check)
+		check = list_checker(list);
+		if (check)
 		{
-			if (check->n > check->next->n)
-			{
-				check = *list;
-				break;
-			}
-			check = check->next;
-			if (!check->next)
-			{
-				return;
-			}
+			break;
 		}
-		tmp = tmp->next;
 	}
 }
