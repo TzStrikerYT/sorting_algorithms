@@ -1,7 +1,17 @@
 #include "sort.h"
 
+/**
+ * lomuto - Particion de matriz
+ * @array: Array
+ * @size: Array size
+ * @low: Low rang
+ * @high: High rang
+ *
+ * Return: size a
+ */
+
 /* PARTICION DE LA MATRIZ DONDE LOW Y HIGH SON LOS INDICES DE LOS RANGOS*/
-size_t lomuto(int *array, size_t size , ssize_t low, ssize_t high)
+size_t lomuto(int *array, size_t size, ssize_t low, ssize_t high)
 {
 	int a, b, pivot = array[high];
 
@@ -9,8 +19,19 @@ size_t lomuto(int *array, size_t size , ssize_t low, ssize_t high)
 		if (array[b] < pivot)
 			swaper(array, size, &array[b], &array[a++]);
 	swaper(array, size,  &array[a], &array[high]);
-	return(a);
+	return (a);
 }
+
+/**
+ * sorter - Sortea xD
+ * @array: Array
+ * @size: Array size
+ * @low: Low rang
+ * @high: High rang
+ *
+ * Return: Nothing
+ */
+
 /* ejecucion de la particion en esquema lomuto */
 void sorter(int *array, size_t size, ssize_t low, ssize_t high)
 {
@@ -23,9 +44,17 @@ void sorter(int *array, size_t size, ssize_t low, ssize_t high)
 	}
 }
 
+/**
+ * swaper - Intercambia dos enteros
+ * @array: Array
+ * @size: Array size
+ * @a: Entero
+ * @b: Entero
+ *
+ * Return: Nothing
+ */
 
 /* INTERCAMBIA DOS VALORES ENTEROS */
-
 void swaper(int *array, size_t size, int *a, int *b)
 {
 	if (*a != *b)
@@ -36,6 +65,14 @@ void swaper(int *array, size_t size, int *a, int *b)
 		print_array((const int *)array, size);
 	}
 }
+
+/**
+ * quick_sort - Sorts an array of integers using the Quick sort algorithm
+ * @array: Array to sort
+ * @size: Array size
+ *
+ * Return: Nothing
+ */
 
 /* LLAMA A A LA FUNCION SORTER */
 void quick_sort(int *array, size_t size)
