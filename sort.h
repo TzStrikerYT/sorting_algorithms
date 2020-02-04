@@ -36,6 +36,7 @@ void selection_sort(int *array, size_t size);
 void swaper(int *array, size_t size, int *a, int *b);
 void list_swaper(listint_t **list, listint_t *current, listint_t *next);
 void quick_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 /*size_t lomuto(int *array, size_t size , size_t low, size_t high);*/
 /*void sorter(int *array, size_t size, size_t low, size_t high);*/
 
