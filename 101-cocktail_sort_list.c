@@ -31,6 +31,7 @@ void list_swaper(listint_t **list, listint_t *current, listint_t *next)
 /**
  * find_forward - Sort node forward
  * @list: Doubly linked list
+ * @head: Pointer to list head
  *
  * Return: Nothing
  */
@@ -53,6 +54,7 @@ listint_t *find_forward(listint_t **head, listint_t *list)
 /**
  * find_back - Sort node back
  * @list: Doubly linked list
+ * @head: Pointer to list head
  *
  * Return: Nothing
  */
